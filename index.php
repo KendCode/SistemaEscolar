@@ -1,13 +1,14 @@
+
 <?php
 session_start();
 include 'models/base de datos/bd_escolar.sql'; // Archivo de conexión a la base de datos
 include 'models/conexion/conexion.php'; // Archivo de conexión
 
 // Verifica si el usuario ha iniciado sesión
-if (!isset($_SESSION['usuario'])) {
+/*if (!isset($_SESSION['usuario'])) {
     header("Location: views/usuarios/login.php");
     exit();
-}
+}*/
 
 ?>
 
@@ -61,3 +62,5 @@ if (!isset($_SESSION['usuario'])) {
 
 </body>
 </html>
+
+
