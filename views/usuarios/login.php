@@ -1,6 +1,7 @@
 <?php
 session_start();
-include '../../database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];

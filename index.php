@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-include 'models/base de datos/bd_escolar.sql'; // Archivo de conexión a la base de datos
+//include 'models/base de datos/bd_escolar.sql'; // Archivo de conexión a la base de datos
 include 'models/conexion/conexion.php'; // Archivo de conexión
 
 // Verifica si el usuario ha iniciado sesión
