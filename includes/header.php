@@ -45,7 +45,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
-          <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+          <img src="img/imagen1 .png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
           Sistema Escolar
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +70,7 @@
             </li>
           </ul>
           <div class="d-flex">
-            <a href="#" class="btn btn-outline-light me-2">Iniciar Sesión</a>
+            <a href="../usuario/login.php" class="btn btn-outline-light me-2">Iniciar Sesión</a>
             <a href="#" class="btn btn-warning">Registrarse</a>
           </div>
         </div>
