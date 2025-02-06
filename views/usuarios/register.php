@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar si el usuario ya existe
     $sql = "SELECT id FROM usuarios WHERE usuario = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $conexion->prepare($sql);
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
     $stmt->store_result();
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insertar en la base de datos
         $sql = "INSERT INTO usuarios (usuario, contrasena, rol) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($sql);
+        $stmt = $conexion->prepare($sql);
         $stmt->bind_param("sss", $usuario, $contrasena_hash, $rol);
 
         if ($stmt->execute()) {
