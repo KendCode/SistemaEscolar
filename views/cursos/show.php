@@ -81,6 +81,8 @@ $result_estudiantes = $stmt_estudiantes->get_result();
     </table>
 
     <a href="index.php" class="btn btn-secondary">Volver a Cursos</a>
+    <a href="show.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">Ver Detalles</a>
+
 </div>
 
 </body>
