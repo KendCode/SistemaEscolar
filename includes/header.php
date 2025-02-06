@@ -70,8 +70,8 @@
             </li>
           </ul>
           <div class="d-flex">
-            <a href="../usuario/login.php" class="btn btn-outline-light me-2">Iniciar Sesión</a>
-            <a href="#" class="btn btn-warning">Registrarse</a>
+            <a href="../views/usuarios/login.php" class="btn btn-outline-light me-2">Iniciar Sesión</a>
+            <a href="../views/usuarios/register.php" class="btn btn-warning">Registrarse</a>
           </div>
         </div>
       </div>
