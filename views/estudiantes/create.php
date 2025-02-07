@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Obtener la lista de cursos para asignar al estudiante
 $sql = "SELECT id, nombre FROM cursos";
-$result = $conn->query($sql);
+$result = $conexion->query($sql);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = trim($_POST['nombre']);
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($nombre) && !empty($apellido) && $edad > 0 && $curso_id > 0) {
         $sql = "INSERT INTO estudiantes (nombre, apellido, edad, curso_id) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
+        $stmt = $conexion->prepare($sql);
         $stmt->bind_param("ssii", $nombre, $apellido, $edad, $curso_id);
         
         if ($stmt->execute()) {
