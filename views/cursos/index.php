@@ -47,8 +47,8 @@ $result = $conexion->query($sql);
                     <td><?php echo $row['curso_nombre']; ?></td>
                     <td><?php echo $row['docente_nombre'] . " " . $row['docente_apellido']; ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este curso?');">Eliminar</a>
+                        <a href="show.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Ver</a>
+                        <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Editar</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

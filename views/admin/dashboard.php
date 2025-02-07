@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['usuario'])) {
-    header("Location: ../auth/login.php");
+    header("Location: ../usuarios/login.php");
     exit();
 }
 
@@ -14,10 +14,10 @@ $sqlDocentes = "SELECT COUNT(*) AS total FROM docentes";
 $sqlCursos = "SELECT COUNT(*) AS total FROM cursos";
 $sqlNotas = "SELECT COUNT(*) AS total FROM notas";
 
-$resultEstudiantes = $conn->query($sqlEstudiantes)->fetch_assoc();
-$resultDocentes = $conn->query($sqlDocentes)->fetch_assoc();
-$resultCursos = $conn->query($sqlCursos)->fetch_assoc();
-$resultNotas = $conn->query($sqlNotas)->fetch_assoc();
+$resultEstudiantes = $conexion->query($sqlEstudiantes)->fetch_assoc();
+$resultDocentes = $conexion->query($sqlDocentes)->fetch_assoc();
+$resultCursos = $conexion->query($sqlCursos)->fetch_assoc();
+$resultNotas = $conexion->query($sqlNotas)->fetch_assoc();
 
 ?>
 
@@ -80,6 +80,7 @@ $resultNotas = $conn->query($sqlNotas)->fetch_assoc();
             </div>
         </div>
     </div>
+    <a href="../asistencias/index.php" class="btn btn-primary">📅 Ver Asistencias</a>
 
     <a href="../auth/logout.php" class="btn btn-secondary mt-3">Cerrar Sesión</a>
 </div>

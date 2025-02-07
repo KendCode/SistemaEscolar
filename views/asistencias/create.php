@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Obtener la lista de estudiantes
 $sql = "SELECT id, nombre, apellido FROM estudiantes";

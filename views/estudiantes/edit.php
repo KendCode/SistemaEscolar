@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Validar si se recibió el ID del estudiante
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -13,7 +13,7 @@ $id = intval($_GET['id']);
 
 // Obtener los datos del estudiante
 $sql = "SELECT * FROM estudiantes WHERE id = ?";
-$stmt = $conn->prepare($sql);
+$stmt = $conexion->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -21,7 +21,7 @@ $estudiante = $result->fetch_assoc();
 
 // Obtener los cursos disponibles
 $sqlCursos = "SELECT id, nombre FROM cursos";
-$resultCursos = $conn->query($sqlCursos);
+$resultCursos = $conexion->query($sqlCursos);
 
 if (!$estudiante) {
     $_SESSION['error'] = "Estudiante no encontrado.";
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($nombre) && !empty($apellido) && $edad > 0 && $curso_id > 0) {
         $sqlUpdate = "UPDATE estudiantes SET nombre = ?, apellido = ?, edad = ?, curso_id = ? WHERE id = ?";
-        $stmtUpdate = $conn->prepare($sqlUpdate);
+        $stmtUpdate = $conexion->prepare($sqlUpdate);
         $stmtUpdate->bind_param("ssiii", $nombre, $apellido, $edad, $curso_id, $id);
 
         if ($stmtUpdate->execute()) {

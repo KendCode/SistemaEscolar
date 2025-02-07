@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Verificar si se recibe el ID del curso
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -12,7 +12,7 @@ $id = $_GET['id'];
 
 // Obtener datos del curso
 $sql = "SELECT * FROM cursos WHERE id = $id";
-$result = $conn->query($sql);
+$result = $conexion->query($sql);
 
 if ($result->num_rows == 0) {
     $_SESSION['mensaje'] = "Curso no encontrado.";
@@ -24,7 +24,7 @@ $curso = $result->fetch_assoc();
 
 // Obtener la lista de docentes
 $sql_docentes = "SELECT id, nombre, apellido FROM docentes";
-$result_docentes = $conn->query($sql_docentes);
+$result_docentes = $conexion->query($sql_docentes);
 
 // Procesar el formulario cuando se envía
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -33,12 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($nombre) && !empty($docente_id)) {
         $sql_update = "UPDATE cursos SET nombre = '$nombre', docente_id = '$docente_id' WHERE id = $id";
-        if ($conn->query($sql_update) === TRUE) {
+        if ($conexion->query($sql_update) === TRUE) {
             $_SESSION['mensaje'] = "Curso actualizado con éxito.";
             header("Location: index.php");
             exit();
         } else {
-            echo "Error: " . $conn->error;
+            echo "Error: " . $conexion->error;
         }
     } else {
         echo "Todos los campos son obligatorios.";
