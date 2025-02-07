@@ -77,8 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <td><?php echo $estudiante['edad']; ?></td>
                     <td><?php echo htmlspecialchars($estudiante['curso']); ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="delete.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar este estudiante?');">Eliminar</a>
+                        <a href="show.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-warning btn-sm">Ver</a>
+                        <a href="edit.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-primary btn-sm" >Editar</a>
                     </td>
                 </tr>
             <?php endwhile; ?>
