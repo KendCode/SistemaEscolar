@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Obtener el ID del docente desde la URL
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -11,7 +11,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
 $id = $_GET['id'];
 $sql = "SELECT * FROM docentes WHERE id = ?";
-$stmt = $conn->prepare($sql);
+$stmt = $con->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
