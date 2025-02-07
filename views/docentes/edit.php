@@ -11,7 +11,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
 $id = $_GET['id'];
 $sql = "SELECT * FROM docentes WHERE id = ?";
-$stmt = $con->prepare($sql);
+$stmt = $conexion->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
