@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Verificar si se recibe un ID válido
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -13,7 +13,7 @@ $nota_id = intval($_GET['id']);
 
 // Obtener la información de la nota
 $sqlNota = "SELECT * FROM notas WHERE id = ?";
-$stmtNota = $conn->prepare($sqlNota);
+$stmtNota = $conexion->prepare($sqlNota);
 $stmtNota->bind_param("i", $nota_id);
 $stmtNota->execute();
 $resultNota = $stmtNota->get_result();
@@ -28,10 +28,10 @@ $nota = $resultNota->fetch_assoc();
 
 // Obtener listas de estudiantes y cursos
 $sqlEstudiantes = "SELECT id, CONCAT(nombre, ' ', apellido) AS nombre_completo FROM estudiantes";
-$resultEstudiantes = $conn->query($sqlEstudiantes);
+$resultEstudiantes = $conexion->query($sqlEstudiantes);
 
 $sqlCursos = "SELECT id, nombre FROM cursos";
-$resultCursos = $conn->query($sqlCursos);
+$resultCursos = $conexion->query($sqlCursos);
 
 // Procesar la edición de la nota
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($estudiante_id > 0 && $curso_id > 0 && $nueva_nota >= 0 && $nueva_nota <= 100) {
         $sqlUpdate = "UPDATE notas SET estudiante_id = ?, curso_id = ?, nota = ? WHERE id = ?";
-        $stmtUpdate = $conn->prepare($sqlUpdate);
+        $stmtUpdate = $conexion->prepare($sqlUpdate);
         $stmtUpdate->bind_param("iidi", $estudiante_id, $curso_id, $nueva_nota, $nota_id);
 
         if ($stmtUpdate->execute()) {
@@ -111,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="index.php" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
+<!-- <a href="edit.php?id=<?php echo $nota['id']; ?>" class="btn btn-warning">Editar</a> -->
 
 </body>
 </html>

@@ -80,9 +80,9 @@ $resultNotas = $conexion->query($sqlNotas)->fetch_assoc();
             </div>
         </div>
     </div>
-    <a href="../asistencias/index.php" class="btn btn-primary">📅 Ver Asistencias</a>
+    <a href="../asistencias/index.php" class="btn btn-primary mt-3">📅 Ver Asistencias</a>
 
-    <a href="../auth/logout.php" class="btn btn-secondary mt-3">Cerrar Sesión</a>
+    <a href="../../index.php" class="btn btn-secondary mt-3">Cerrar Sesión</a>
 </div>
 
 </body>

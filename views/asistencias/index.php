@@ -50,15 +50,15 @@ $result = $conexion->query($sql);
                     <td><?php echo $row['fecha']; ?></td>
                     <td><?php echo $row['estado']; ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta asistencia?');">Eliminar</a>
+                        <a href="../estudiantes/show.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Ver</a>
+                        <a href="../estudiantes/edit.php?<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Editar</a>
                     </td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
 
-    <p class="mt-3 text-center"><a href="../dashboard.php">Volver al Panel</a></p>
+    <p class="mt-3 text-center"><a href="../admin/dashboard.php">Volver al Panel</a></p>
 </div>
 
 </body>

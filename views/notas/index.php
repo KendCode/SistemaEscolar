@@ -1,13 +1,13 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Consulta para obtener las notas con información de estudiantes y cursos
 $sql = "SELECT notas.id, estudiantes.nombre AS estudiante, estudiantes.apellido, cursos.nombre AS curso, notas.nota
         FROM notas
         INNER JOIN estudiantes ON notas.estudiante_id = estudiantes.id
         INNER JOIN cursos ON notas.curso_id = cursos.id";
-$result = $conn->query($sql);
+$result = $conexion->query($sql);
 
 // Manejo de mensajes de éxito o error
 $mensaje = isset($_SESSION['mensaje']) ? $_SESSION['mensaje'] : '';
@@ -34,7 +34,7 @@ unset($_SESSION['mensaje']);
 
     <div class="d-flex justify-content-between mb-3">
         <a href="create.php" class="btn btn-primary">Añadir Nueva Nota</a>
-        <a href="../dashboard.php" class="btn btn-secondary">Volver al Dashboard</a>
+        <a href="../admin/dashboard.php" class="btn btn-secondary">Volver al Dashboard</a>
     </div>
 
     <table class="table table-striped">
@@ -55,8 +55,8 @@ unset($_SESSION['mensaje']);
                     <td><?php echo $row['curso']; ?></td>
                     <td><?php echo $row['nota']; ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Editar</a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta nota?');">Eliminar</a>
+                        <a href="../estudiantes/show.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Ver</a>
+                        <a href="../estudiantes/edit.php?php echo $row['id']; ?>" class="btn btn-primary">Editar</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

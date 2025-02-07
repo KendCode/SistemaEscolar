@@ -1,13 +1,13 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Obtener estudiantes y cursos disponibles
 $sqlEstudiantes = "SELECT id, CONCAT(nombre, ' ', apellido) AS nombre_completo FROM estudiantes";
-$resultEstudiantes = $conn->query($sqlEstudiantes);
+$resultEstudiantes = $conexion->query($sqlEstudiantes);
 
 $sqlCursos = "SELECT id, nombre FROM cursos";
-$resultCursos = $conn->query($sqlCursos);
+$resultCursos = $conexion->query($sqlCursos);
 
 // Procesar el formulario de creación de nota
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($estudiante_id > 0 && $curso_id > 0 && $nota >= 0 && $nota <= 100) {
         $sqlInsert = "INSERT INTO notas (estudiante_id, curso_id, nota) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($sqlInsert);
+        $stmt = $conexion->prepare($sqlInsert);
         $stmt->bind_param("iid", $estudiante_id, $curso_id, $nota);
 
         if ($stmt->execute()) {
