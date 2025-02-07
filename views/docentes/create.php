@@ -3,19 +3,17 @@ session_start();
 include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = trim($_POST['nombre']);
-    $apellido = trim($_POST['apellido']);
-    $correo = trim($_POST['correo']);
-    $materia = trim($_POST['materia']);
+    $nombre = trim($_POST["nombre"]);
+    $apellido = trim($_POST["apellido"]);
+    $materia = trim($_POST["materia"]);
 
-    if (!empty($nombre) && !empty($apellido) && !empty($correo) && !empty($materia)) {
-        $sql = "INSERT INTO docentes (nombre, apellido, correo, materia) VALUES (?, ?, ?, ?)";
-        $stmt = $con->prepare($sql);
-        $stmt->bind_param("ssss", $nombre, $apellido, $correo, $materia);
-        
+    if (!empty($nombre) && !empty($apellido) && !empty($materia)) {
+        $sql = "INSERT INTO docentes (nombre, apellido, materia) VALUES (?, ?, ?)";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param("sss", $nombre, $apellido, $materia);
+
         if ($stmt->execute()) {
-            $_SESSION['mensaje'] = "Docente registrado exitosamente.";
-
+            $_SESSION['mensaje'] = "Docente registrado correctamente.";
             header("Location: index.php");
             exit();
         } else {
@@ -45,30 +43,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="alert alert-danger"><?php echo $error; ?></div>
     <?php endif; ?>
 
-    <form action="create.php" method="POST" class="mt-4">
+    <form action="create.php" method="POST">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" name="nombre" id="nombre" class="form-control" required>
+            <input type="text" name="nombre" class="form-control" required>
         </div>
-        
         <div class="mb-3">
             <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" name="apellido" id="apellido" class="form-control" required>
+            <input type="text" name="apellido" class="form-control" required>
         </div>
-
-        <div class="mb-3">
-            <label for="correo" class="form-label">Correo</label>
-            <input type="email" name="correo" id="correo" class="form-control" required>
-        </div>
-
         <div class="mb-3">
             <label for="materia" class="form-label">Materia</label>
-            <input type="text" name="materia" id="materia" class="form-control" required>
+            <input type="text" name="materia" class="form-control" required>
         </div>
-
         <button type="submit" class="btn btn-primary">Registrar</button>
-        <a href="index.php" class="btn btn-secondary">Cancelar</a>
-
+        <a href="index.php" class="btn btn-secondary">Volver</a>
     </form>
 </div>
 

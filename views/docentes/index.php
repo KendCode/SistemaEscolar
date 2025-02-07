@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../../config/database.php'; // Conexión a la base de datos
+include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
 // Obtener la lista de docentes
 $sql = "SELECT * FROM docentes";
-$result = $conn->query($sql);
+$result = $conexion->query($sql);
 ?>
 
 <!DOCTYPE html>
