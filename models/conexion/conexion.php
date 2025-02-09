@@ -1,15 +1,19 @@
 <?php
-$usuario ="root";
+class Database {
+    private static $servidor = "localhost";
+    private static $usuario = "root";
+    private static $contrasena = "";
+    private static $bd_datos = "bd_escolar";
+    private static $conexion = null;
 
-$contrasena ="";
-
-$bd_datos="bd_escolar";
-
-$servidor ="localhost";
-
-//conexion a la base de datos
-//mysql_connect(servidor, usuario, contrasena, base de datos) 
-//OR DIE MENSAJE PARA SABER SI SE CONECTO O NO 
-$conexion = mysqli_connect("$servidor", "$usuario", "$contrasena", "$bd_datos") or die ("no se conecto a la base de datos, contactese con soporte tecnico");
-
+    public static function conectar() {
+        if (self::$conexion == null) {
+            self::$conexion = new mysqli(self::$servidor, self::$usuario, self::$contrasena, self::$bd_datos);
+            if (self::$conexion->connect_error) {
+                die("Error de conexión: " . self::$conexion->connect_error);
+            }
+        }
+        return self::$conexion;
+    }
+}
 ?>

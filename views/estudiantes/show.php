@@ -2,6 +2,13 @@
 session_start();
 include '../../models/conexion/conexion.php'; // Conexión a la base de datos
 
+
+// Verifica si el usuario ha iniciado sesión
+if (!isset($_SESSION['usuario'])) {
+    header("Location: views/usuarios/login.php");
+    exit();
+}
+
 // Verificar si se recibe un ID válido por GET
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     die("Error: ID de estudiante no proporcionado.");

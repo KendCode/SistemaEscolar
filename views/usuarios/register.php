@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="mb-3">
                     <label for="rol" class="form-label">Rol</label>
                     <select class="form-control" id="rol" name="rol" required>
-                        <option value="estudiante">Estudiante</option>
+                        <!-- <option value="estudiante">Estudiante</option> -->
                         <option value="docente">Docente</option>
                         <option value="admin">Administrador</option>
                     </select>
