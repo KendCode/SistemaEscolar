@@ -40,7 +40,7 @@
                         <span class="nav-link text-light">👤 <?php echo $_SESSION['usuario']; ?></span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-danger text-white" href="../views/usuarios/login.php">Salir</a>
+                        <a class="nav-link btn btn-danger text-white" href="../../SistemaEscolar/views/usuarios/login.php">Salir</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
