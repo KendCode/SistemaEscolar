@@ -84,44 +84,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <td><?php echo htmlspecialchars($estudiante['curso']); ?></td>
                     <td>
                         <a href="show.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-warning btn-sm">Ver</a>
-                        <a href="edit.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-primary btn-sm" >Editar</a>
+                        <a href="../asistencias/create.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-primary btn-sm" >Asistencia</a>
+                        <a href="../notas/create.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-success btn-sm" >Notas</a>
+                        <a href="../notas/edit.php?id=<?php echo $estudiante['id']; ?>" class="btn btn-dark btn-sm" >Editar Notas</a>
                     </td>
                 </tr>
             <?php endwhile; ?>
         </tbody>
     </table>
 
-    <!-- Formulario de registro de estudiante -->
-    <h2 class="text-center mt-5">Registrar Estudiante</h2>
-    <form action="index.php" method="POST" class="mt-4">
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" name="nombre" id="nombre" class="form-control" required>
-        </div>
-        
-        <div class="mb-3">
-            <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" name="apellido" id="apellido" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="edad" class="form-label">Edad</label>
-            <input type="number" name="edad" id="edad" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="curso_id" class="form-label">Curso</label>
-            <select name="curso_id" id="curso_id" class="form-control" required>
-                <option value="">Seleccione un curso</option>
-                <?php while ($row_curso = $result_cursos->fetch_assoc()) : ?>
-                    <option value="<?php echo $row_curso['id']; ?>"><?php echo $row_curso['nombre']; ?></option>
-                <?php endwhile; ?>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Registrar</button>
-        <a href="index.php" class="btn btn-secondary">Cancelar</a>
-    </form>
+    
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

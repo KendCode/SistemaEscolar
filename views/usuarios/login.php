@@ -22,7 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($row['rol'] == 'admin') {
                 header("Location: ../admin/dashboard.php");
-            } else {
+            } else if($row['rol'] == 'docente'){
+                header("Location: ../estudiantes/list.php");
+            } else if($row['rol'] == 'estudiante'){
+                header("Location: ../estudiantes/index.php");
+            }else{ 
                 header("Location: ../../index.php");
             }
             exit();

@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -48,7 +44,7 @@ session_start();
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-white" href="login.php">Iniciar Sesión</a>
+                        <a class="nav-link btn btn-primary text-white" href="../../SistemaEscolar/views/usuarios/login.php">Iniciar Sesión</a>
                     </li>
                 <?php endif; ?>
             </ul>
